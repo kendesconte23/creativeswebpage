@@ -6,7 +6,7 @@ const Gallery: React.FC = () => {
 
   const images = [
     {
-      src: "https://scontent.fmnl4-2.fna.fbcdn.net/v/t39.30808-6/513248684_1195308455942089_4109867057533559891_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeFX8wAswYWjHtbmmzjrj2jmkletH2rM2TiSV60faszZOFk3zd8QSR_Rms4Gi_FOwcmLCquGAyU1L2Nzwx2OK4JI&_nc_ohc=u6E7Q_HzUQwQ7kNvwGULTti&_nc_oc=AdnYBY9cO7KrAXSDl0kz5JWmOv02Lx1TiWkxIIL0Z0pbM1RovxNmxQj2iDLQxSQEL3uaDQ6rkhRunAxmtCKA76_8&_nc_zt=23&_nc_ht=scontent.fmnl4-2.fna&_nc_gid=tHVRqzBbJzy1mj-7UAkYqw&oh=00_AfMpgUl4alzWzIMaYEmgNb9nlkcj2fObigDS77gwULKJuA&oe=686D4967",
+      src: "https://drive.google.com/thumbnail?id=1LMn1bqCQ__MwevIPdpAJQNOAPSsP7V0u&sz=s800",
       alt: "Beautiful event styling by Creatives by Hazel & Ken",
       category: "Our Work"
     },
