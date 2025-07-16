@@ -16,7 +16,7 @@ const Gallery: React.FC = () => {
       category: "Centerpieces"
     },
     {
-      src: "https://images.pexels.com/photos/1729931/pexels-photo-1729931.jpeg?auto=compress&cs=tinysrgb&w=800",
+      src: "https://drive.google.com/thumbnail?id=18auikFkhG0rQzglI_HZYbktDe7w3Mff-&sz=s800",
       alt: "Styled party table with decorations",
       category: "Table Setup"
     },
