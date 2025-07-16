@@ -11,7 +11,7 @@ const Gallery: React.FC = () => {
       category: "Our Work"
     },
     {
-      src: "https://images.pexels.com/photos/1666069/pexels-photo-1666069.jpeg?auto=compress&cs=tinysrgb&w=800",
+      src: "https://drive.google.com/thumbnail?id=1mjtI6HDCo3BDc3QngYWhzzqUfJ4g4N5c&sz=s800",
       alt: "Beautiful table centerpiece with balloons",
       category: "Centerpieces"
     },
