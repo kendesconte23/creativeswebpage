@@ -117,7 +117,7 @@ function App() {
     const spacing = 15;
     const totalWidth = (widgetWidth * 4) + centerWidgetWidth + (spacing * 4);
     const startX = (screenWidth - totalWidth) / 2;
-    const centerY = (screenHeight - centerWidgetHeight) / 2 + 40; // Move down to avoid CREATIVES text
+    const centerY = (screenHeight - centerWidgetHeight) / 2 + 120; // Move further down to avoid text overlap
     
     // Position 5 widgets in a horizontal row
     if (adjustedIndex === 0) {
@@ -135,7 +135,7 @@ function App() {
       // Left of center
       return {
         x: startX + widgetWidth + spacing,
-        y: centerY + 30,
+        y: centerY + 40,
         scale: 1,
         zIndex: 5,
         isCenter: false,
@@ -146,7 +146,7 @@ function App() {
       // Right of center
       return {
         x: startX + (widgetWidth * 2) + centerWidgetWidth + (spacing * 3),
-        y: centerY + 30,
+        y: centerY + 40,
         scale: 1,
         zIndex: 5,
         isCenter: false,
@@ -157,7 +157,7 @@ function App() {
       // Far left
       return {
         x: startX,
-        y: centerY + 60,
+        y: centerY + 80,
         scale: 1,
         zIndex: 3,
         isCenter: false,
@@ -168,7 +168,7 @@ function App() {
       // Far right
       return {
         x: startX + (widgetWidth * 3) + centerWidgetWidth + (spacing * 4),
-        y: centerY + 60,
+        y: centerY + 80,
         scale: 1,
         zIndex: 3,
         isCenter: false,
@@ -223,7 +223,8 @@ function App() {
           zIndex: position.zIndex,
           width: `${position.width}px`,
           height: `${position.height}px`,
-          display: isVisible ? 'block' : 'none',
+          position: 'absolute',
+          display: isVisible ? 'block' : 'none'
         }}
         onClick={() => onClick(photo)}
       >
@@ -356,10 +357,10 @@ function App() {
       <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-warm-light via-warm-medium to-warm-dark"></div>
         
-        {/* Widget Carousel - Constrained to Hero Section */}
-        <div className="absolute inset-0 z-5" style={{ clipPath: 'inset(0 0 0 0)' }}>
+        {/* Widget Carousel Container - Constrained to Hero Section */}
+        <div className="widget-carousel-container">
           {/* Rotation Controls */}
-          <div className="fixed top-1/2 left-4 -translate-y-1/2 z-20">
+          <div className="absolute top-1/2 left-4 -translate-y-1/2 z-20 pointer-events-auto">
             <button
               onClick={rotateLeft}
               className="glass-warm p-3 rounded-full hover:bg-warm-dark/20 transition-colors duration-200"
@@ -370,7 +371,7 @@ function App() {
             </button>
           </div>
 
-          <div className="fixed top-1/2 right-4 -translate-y-1/2 z-20">
+          <div className="absolute top-1/2 right-4 -translate-y-1/2 z-20 pointer-events-auto">
             <button
               onClick={rotateRight}
               className="glass-warm p-3 rounded-full hover:bg-warm-dark/20 transition-colors duration-200"
@@ -396,7 +397,7 @@ function App() {
         </div>
         
         {/* Floating Elements */}
-        <div className="absolute top-20 right-20 float-animation">
+        <div className="absolute top-24 right-20 float-animation">
           <div className="glass-warm p-4 rounded-full">
             <Heart className="w-6 h-6 text-warm-dark" />
           </div>
@@ -408,14 +409,14 @@ function App() {
           </div>
         </div>
         
-        <div className="absolute top-1/2 left-10 float-animation" style={{ animationDelay: '2s' }}>
+        <div className="absolute top-1/2 left-16 float-animation" style={{ animationDelay: '2s' }}>
           <div className="glass-warm p-4 rounded-full">
             <Sparkles className="w-6 h-6 text-warm-dark" />
           </div>
         </div>
 
         {/* CREATIVES Branding - Positioned at top to avoid widget overlap */}
-        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 z-5 text-center pointer-events-none">
+        <div className="absolute top-32 left-1/2 transform -translate-x-1/2 z-5 text-center pointer-events-none">
           <div className="flex items-center justify-center gap-4 mb-8">
             <Sparkles className="w-8 h-8 text-warm-dark" />
             <h1 className="text-4xl md:text-6xl font-bold text-warm-dark">CREATIVES</h1>
@@ -426,14 +427,14 @@ function App() {
             Your Dream Wedding Events Booth
           </p>
           
-          <p className="text-lg text-warm-dark/70 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-warm-dark/70 mb-8 max-w-2xl mx-auto leading-relaxed">
             Creating unforgettable wedding experiences with premium event booth services. 
             From elegant setups to stunning photography, we make your special day extraordinary.
           </p>
         </div>
 
         {/* Call to Action Button - Positioned at bottom */}
-        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-10 pointer-events-auto">
+        <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10 pointer-events-auto">
           <button
             onClick={() => scrollToSection('gallery')}
             className="bg-warm-dark text-warm-light px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105"

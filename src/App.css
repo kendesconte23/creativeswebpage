@@ -177,8 +177,48 @@ section {
   section {
     padding: 60px 0;
   }
+  
+  /* Adjust widget positioning for mobile */
+  .floating-widget {
+    width: 200px !important;
+    height: 280px !important;
+  }
 }
 
+@media (max-width: 1024px) {
+  /* Adjust widget positioning for tablets */
+  .floating-widget {
+    width: 240px !important;
+    height: 320px !important;
+  }
+}
+
+/* Widget positioning constraints */
+.floating-widget {
+  position: absolute !important;
+  max-width: 350px;
+  max-height: 450px;
+}
+
+/* Ensure widgets don't overflow hero section */
+#hero {
+  contain: layout;
+}
+
+/* Widget container positioning */
+.widget-carousel-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.widget-carousel-container .floating-widget {
+  pointer-events: auto;
+}
 /* Button hover effects */
 button {
   transition: all 0.3s ease;
@@ -203,6 +243,7 @@ nav button.active {
   background: linear-gradient(135deg, var(--warm-light) 0%, var(--warm-medium) 50%, var(--warm-brown) 100%);
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 /* Ensure widgets stay within hero section */
@@ -214,11 +255,6 @@ nav button.active {
   bottom: 0;
   overflow: hidden;
   z-index: 5;
-}
-
-/* Hide widgets outside hero section */
-.floating-widget {
-  position: fixed !important;
 }
 
 /* Ensure other sections have higher z-index when scrolled to */
