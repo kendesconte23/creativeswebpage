@@ -117,7 +117,6 @@ function App() {
     const spacing = 15;
     const totalWidth = (widgetWidth * 4) + centerWidgetWidth + (spacing * 4);
     const startX = (screenWidth - totalWidth) / 2;
-    const centerY = (screenHeight - centerWidgetHeight) / 2 + 120; // Move further down to avoid text overlap
     const centerY = Math.max((screenHeight - centerWidgetHeight) / 2 + 250, 400); // Ensure minimum distance from top
     
     // Position 5 widgets in a horizontal row
