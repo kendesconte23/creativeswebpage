@@ -269,19 +269,23 @@ function App() {
           <h3 className={`font-bold mb-2 ${position.isCenter ? 'text-xl' : 'text-lg'}`}>
             {photo.title}
           </h3>
-          <p className={`text-warm-dark/80 ${position.isCenter ? 'text-sm mb-4' : 'text-xs mb-3'} line-clamp-2`}>
+          <p className={`text-warm-dark/80 ${position.isCenter ? 'text-sm mb-6' : 'text-xs mb-2'} line-clamp-2`}>
             {position.isCenter ? photo.description.substring(0, 120) + '...' : photo.description.substring(0, 60) + '...'}
           </p>
           
           {position.isCenter && (
-            <button className="w-full bg-warm-dark/20 hover:bg-warm-dark/30 text-warm-dark py-2 px-4 rounded-lg transition-colors duration-200 text-sm font-medium">
-              Click to view details
+            <button className="w-full bg-warm-dark/20 hover:bg-warm-dark/40 text-warm-dark py-3 px-4 rounded-lg transition-all duration-200 text-sm font-semibold shadow-sm hover:shadow-md flex items-center justify-center gap-2">
+              <Eye className="w-4 h-4" />
+              View Full Details
             </button>
           )}
           
           {!position.isCenter && (
-            <div className="text-xs text-warm-dark/60 mt-2">
-              Click to view details
+            <div className="mt-3 pt-3 border-t border-warm-dark/20">
+              <div className="flex items-center justify-center gap-2 text-warm-dark/70 hover:text-warm-dark transition-colors duration-200">
+                <Eye className="w-3 h-3" />
+                <span className="text-xs font-medium">Click to view details</span>
+              </div>
             </div>
           )}
         </div>
