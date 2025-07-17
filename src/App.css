@@ -183,6 +183,11 @@ section {
     width: 200px !important;
     height: 280px !important;
   }
+  
+  /* Ensure more space on mobile */
+  #hero .widget-carousel-container {
+    padding-top: 300px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -190,6 +195,11 @@ section {
   .floating-widget {
     width: 240px !important;
     height: 320px !important;
+  }
+  
+  /* Ensure more space on tablets */
+  #hero .widget-carousel-container {
+    padding-top: 250px;
   }
 }
 
@@ -214,6 +224,7 @@ section {
   bottom: 0;
   pointer-events: none;
   z-index: 5;
+  padding-top: 200px; /* Add top padding to push widgets down */
 }
 
 .widget-carousel-container .floating-widget {

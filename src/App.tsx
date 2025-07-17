@@ -118,6 +118,7 @@ function App() {
     const totalWidth = (widgetWidth * 4) + centerWidgetWidth + (spacing * 4);
     const startX = (screenWidth - totalWidth) / 2;
     const centerY = (screenHeight - centerWidgetHeight) / 2 + 120; // Move further down to avoid text overlap
+    const centerY = Math.max((screenHeight - centerWidgetHeight) / 2 + 250, 400); // Ensure minimum distance from top
     
     // Position 5 widgets in a horizontal row
     if (adjustedIndex === 0) {
@@ -135,7 +136,7 @@ function App() {
       // Left of center
       return {
         x: startX + widgetWidth + spacing,
-        y: centerY + 40,
+        y: centerY + 50,
         scale: 1,
         zIndex: 5,
         isCenter: false,
@@ -146,7 +147,7 @@ function App() {
       // Right of center
       return {
         x: startX + (widgetWidth * 2) + centerWidgetWidth + (spacing * 3),
-        y: centerY + 40,
+        y: centerY + 50,
         scale: 1,
         zIndex: 5,
         isCenter: false,
@@ -157,7 +158,7 @@ function App() {
       // Far left
       return {
         x: startX,
-        y: centerY + 80,
+        y: centerY + 100,
         scale: 1,
         zIndex: 3,
         isCenter: false,
@@ -168,7 +169,7 @@ function App() {
       // Far right
       return {
         x: startX + (widgetWidth * 3) + centerWidgetWidth + (spacing * 4),
-        y: centerY + 80,
+        y: centerY + 100,
         scale: 1,
         zIndex: 3,
         isCenter: false,
@@ -416,7 +417,7 @@ function App() {
         </div>
 
         {/* CREATIVES Branding - Positioned at top to avoid widget overlap */}
-        <div className="absolute top-32 left-1/2 transform -translate-x-1/2 z-5 text-center pointer-events-none">
+        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 z-5 text-center pointer-events-none">
           <div className="flex items-center justify-center gap-4 mb-8">
             <Sparkles className="w-8 h-8 text-warm-dark" />
             <h1 className="text-4xl md:text-6xl font-bold text-warm-dark">CREATIVES</h1>
@@ -427,7 +428,7 @@ function App() {
             Your Dream Wedding Events Booth
           </p>
           
-          <p className="text-base md:text-lg text-warm-dark/70 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-warm-dark/70 mb-12 max-w-2xl mx-auto leading-relaxed">
             Creating unforgettable wedding experiences with premium event booth services. 
             From elegant setups to stunning photography, we make your special day extraordinary.
           </p>
