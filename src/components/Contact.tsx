@@ -1,115 +1,249 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
-import ViberContact from './ViberContact';
+import { Phone, Mail, MapPin, Clock, Send, Facebook, Instagram, MessageCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    eventDate: '',
+    message: '',
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    alert('Thank you for your inquiry! We will contact you soon.');
+    setFormData({ name: '', email: '', phone: '', eventDate: '', message: '' });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const contactInfo = [
     {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      details: ["Quezon City, Metro Manila", "Philippines"],
-      color: "creative-blue"
+      icon: Phone,
+      title: 'Phone',
+      details: '+63 912 345 6789',
+      link: 'tel:+639123456789',
     },
     {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      details: ["+63 960 471 6706", "+63 949 803 8875"],
-      color: "creative-orange"
+      icon: Mail,
+      title: 'Email',
+      details: 'hello@creatives.wedding',
+      link: 'mailto:hello@creatives.wedding',
     },
     {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      details: ["creativeseventstyling@gmail.com"],
-      color: "creative-purple"
+      icon: MapPin,
+      title: 'Location',
+      details: 'Manila, Philippines',
+      link: '#',
     },
     {
-      icon: <Clock className="w-6 h-6" />,
-      title: "Business Hours",
-      details: ["Mon - Sat: 9:00 AM - 6:00 PM", "Sunday: By appointment"],
-      color: "creative-teal"
-    }
+      icon: Clock,
+      title: 'Hours',
+      details: 'Mon-Sat: 9AM-6PM',
+      link: '#',
+    },
+  ];
+
+  const socialLinks = [
+    {
+      icon: Facebook,
+      name: 'Facebook',
+      link: '#',
+      color: 'text-blue-400',
+    },
+    {
+      icon: Instagram,
+      name: 'Instagram',
+      link: '#',
+      color: 'text-pink-400',
+    },
+    {
+      icon: MessageCircle,
+      name: 'WhatsApp',
+      link: '#',
+      color: 'text-green-400',
+    },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-creative-gradient-soft">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen p-8 pt-24">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-creative-blue-800 mb-4">Contact Us</h2>
-          <div className="w-24 h-1 bg-creative-gradient mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl text-creative-blue-700 max-w-3xl mx-auto">
-            Ready to make your event unforgettable? Chat with us directly on Viber for instant responses
+          <h1 className="text-5xl font-bold text-white mb-6">Contact Us</h1>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            Ready to start planning your dream wedding? Get in touch with us today! 
+            We're here to answer all your questions and help you create the perfect celebration.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Viber Contact */}
-          <div>
-            <ViberContact />
+          {/* Contact Form */}
+          <div className="glass p-8 rounded-3xl">
+            <div className="text-center mb-8">
+              <MessageCircle className="w-16 h-16 text-purple-400 mx-auto mb-4" />
+              <h2 className="text-3xl font-bold text-white mb-4">Contact via Viber</h2>
+              <p className="text-white/80">
+                Click on the QR codes below or tap the contact buttons to chat with us directly on Viber
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              {/* Hazel Contact */}
+              <div className="glass-dark p-6 rounded-2xl text-center">
+                <div className="w-32 h-32 mx-auto mb-4 bg-white p-2 rounded-xl">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=viber://chat?number=%2B639498038875"
+                    alt="Hazel Viber QR Code"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Hazel Desconte</h3>
+                <p className="text-white/80 mb-3">Creative Director</p>
+                <p className="text-white/60 text-sm mb-4">+639498038875</p>
+                <button
+                  onClick={() => window.open('viber://chat?number=%2B639498038875', '_blank')}
+                  className="w-full bg-purple-500 hover:bg-purple-600 text-white py-3 px-4 rounded-full font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Chat with Hazel
+                </button>
+              </div>
+
+              {/* Ken Contact */}
+              <div className="glass-dark p-6 rounded-2xl text-center">
+                <div className="w-32 h-32 mx-auto mb-4 bg-white p-2 rounded-xl">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=viber://chat?number=%2B639604716706"
+                    alt="Ken Viber QR Code"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Ken Desconte</h3>
+                <p className="text-white/80 mb-3">Event Styling Specialist</p>
+                <p className="text-white/60 text-sm mb-4">+639604716706</p>
+                <button
+                  onClick={() => window.open('viber://chat?number=%2B639604716706', '_blank')}
+                  className="w-full bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-full font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Chat with Ken
+                </button>
+              </div>
+            </div>
+
+            {/* Instant Messaging Section */}
+            <div className="glass-dark p-6 rounded-2xl">
+              <div className="flex items-center gap-3 mb-4">
+                <MessageCircle className="w-6 h-6 text-green-400" />
+                <h3 className="text-xl font-bold text-white">Instant Messaging Available</h3>
+              </div>
+              <p className="text-white/80 mb-6">
+                Get immediate responses by chatting with us on Viber! Simply click on the QR codes above or use the chat buttons to start a conversation.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-4">
+                <button
+                  onClick={() => window.open('viber://chat?number=%2B639604716706', '_blank')}
+                  className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white py-3 px-6 rounded-full font-semibold transition-all duration-200 flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Ken Desconte
+                  <span className="text-xs opacity-80">Event Styling Specialist</span>
+                </button>
+                
+                <button
+                  onClick={() => window.open('viber://chat?number=%2B639498038875', '_blank')}
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 px-6 rounded-full font-semibold transition-all duration-200 flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Hazel Desconte
+                  <span className="text-xs opacity-80">Creative Director</span>
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Contact Information */}
           <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-creative-blue-800 mb-6">Get in Touch</h3>
-              <p className="text-creative-blue-700 text-lg mb-8">
-                We'd love to hear from you! Chat with us on Viber for immediate responses, 
-                or reach out through any of the following ways.
+            {/* Contact Details */}
+            <div className="glass p-8 rounded-3xl">
+              <h2 className="text-3xl font-bold text-white mb-6">Get in Touch</h2>
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => {
+                  const Icon = info.icon;
+                  return (
+                    <div key={index} className="flex items-start gap-4">
+                      <div className="glass-dark p-3 rounded-full">
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-white font-semibold">{info.title}</h3>
+                        <a
+                          href={info.link}
+                          className="text-white/80 hover:text-white transition-colors duration-200"
+                        >
+                          {info.details}
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="glass p-8 rounded-3xl">
+              <h2 className="text-2xl font-bold text-white mb-6">Follow Us</h2>
+              <div className="flex gap-4">
+                {socialLinks.map((social, index) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={index}
+                      href={social.link}
+                      className={`glass-dark p-4 rounded-full ${social.color} hover:scale-110 transition-transform duration-300`}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </a>
+                  );
+                })}
+              </div>
+              <p className="text-white/80 mt-4 text-sm">
+                Stay updated with our latest work and wedding inspiration!
               </p>
             </div>
 
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <div key={index} className={`flex items-start space-x-4 bg-white p-6 rounded-2xl shadow-lg border border-${info.color}-100`}>
-                  <div className={`text-${info.color}-500 mt-1`}>
-                    {info.icon}
-                  </div>
-                  <div>
-                    <h4 className={`font-bold text-${info.color}-700 mb-2`}>{info.title}</h4>
-                    {info.details.map((detail, detailIndex) => (
-                      <p key={detailIndex} className="text-gray-700">
-                        {detail}
-                      </p>
-                    ))}
-                  </div>
+            {/* Business Hours */}
+            <div className="glass p-8 rounded-3xl">
+              <h2 className="text-2xl font-bold text-white mb-6">Business Hours</h2>
+              <div className="space-y-3 text-white/80">
+                <div className="flex justify-between">
+                  <span>Monday - Friday</span>
+                  <span>9:00 AM - 6:00 PM</span>
                 </div>
-              ))}
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-creative-blue-100">
-              <h4 className="font-bold text-creative-blue-800 mb-4">Why Choose Us?</h4>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-center"><span className="w-2 h-2 bg-creative-orange-500 rounded-full mr-3"></span>Free consultation and quote</li>
-                <li className="flex items-center"><span className="w-2 h-2 bg-creative-purple-500 rounded-full mr-3"></span>Professional setup and breakdown</li>
-                <li className="flex items-center"><span className="w-2 h-2 bg-creative-teal-500 rounded-full mr-3"></span>Flexible scheduling and packages</li>
-                <li className="flex items-center"><span className="w-2 h-2 bg-creative-blue-500 rounded-full mr-3"></span>Quality materials and decorations</li>
-                <li className="flex items-center"><span className="w-2 h-2 bg-creative-orange-500 rounded-full mr-3"></span>Experienced team you can trust</li>
-                <li className="flex items-center"><span className="w-2 h-2 bg-creative-purple-500 rounded-full mr-3"></span>Serving Quezon City and nearby areas</li>
-              </ul>
-            </div>
-
-            <div className="bg-creative-gradient p-6 rounded-2xl text-white">
-              <h4 className="font-bold mb-4 flex items-center">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Instant Messaging Available
-              </h4>
-              <p className="text-creative-blue-50 mb-4">
-                Get immediate responses by chatting with us on Viber! Scan our QR codes or fill out your details for a personalized conversation.
-              </p>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="bg-white/20 p-3 rounded-lg">
-                  <p className="font-medium">Ken Desconte</p>
-                  <p className="text-creative-blue-100">Event Styling Specialist</p>
+                <div className="flex justify-between">
+                  <span>Saturday</span>
+                  <span>9:00 AM - 4:00 PM</span>
                 </div>
-                <div className="bg-white/20 p-3 rounded-lg">
-                  <p className="font-medium">Hazel Desconte</p>
-                  <p className="text-creative-blue-100">Creative Director</p>
+                <div className="flex justify-between">
+                  <span>Sunday</span>
+                  <span>By Appointment</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -1,0 +1,261 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --warm-light: #FDF4DC;
+  --warm-medium: #E8D5B7;
+  --warm-dark: #151515;
+  --warm-brown: #7E6551;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--warm-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Color Classes */
+.text-warm-light { color: var(--warm-light); }
+.text-warm-medium { color: var(--warm-medium); }
+.text-warm-dark { color: var(--warm-dark); }
+.text-warm-brown { color: var(--warm-brown); }
+
+.bg-warm-light { background-color: var(--warm-light); }
+.bg-warm-medium { background-color: var(--warm-medium); }
+.bg-warm-dark { background-color: var(--warm-dark); }
+.bg-warm-brown { background-color: var(--warm-brown); }
+
+/* Opacity variants */
+.text-warm-light\/80 { color: rgba(253, 244, 220, 0.8); }
+.text-warm-light\/70 { color: rgba(253, 244, 220, 0.7); }
+.text-warm-light\/60 { color: rgba(253, 244, 220, 0.6); }
+.text-warm-dark\/80 { color: rgba(21, 21, 21, 0.8); }
+.text-warm-dark\/70 { color: rgba(21, 21, 21, 0.7); }
+.text-warm-dark\/60 { color: rgba(21, 21, 21, 0.6); }
+
+.bg-warm-dark\/10 { background-color: rgba(21, 21, 21, 0.1); }
+.bg-warm-dark\/20 { background-color: rgba(21, 21, 21, 0.2); }
+.bg-warm-dark\/80 { background-color: rgba(21, 21, 21, 0.8); }
+
+/* Prevent text selection in widgets */
+.widget, .draggable-widget, .photo-card, .floating-widget,
+.glass, .glass-dark, .select-none,
+h1, h2, h3, p, span, div {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Allow text selection for form inputs and content areas */
+input, textarea, .selectable {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Glassmorphism Effects with Warm Palette */
+.glass-warm {
+  background: rgba(253, 244, 220, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(253, 244, 220, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(21, 21, 21, 0.1);
+}
+
+.glass-dark {
+  background: rgba(21, 21, 21, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(253, 244, 220, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(21, 21, 21, 0.3);
+}
+
+/* Hover effects */
+.glass-warm:hover {
+  background: rgba(253, 244, 220, 0.4);
+  border-color: rgba(253, 244, 220, 0.5);
+}
+
+.glass-dark:hover {
+  background: rgba(21, 21, 21, 0.4);
+  border-color: rgba(253, 244, 220, 0.3);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Smooth scrolling sections */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Custom scrollbar with warm colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--warm-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--warm-brown);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--warm-dark);
+}
+
+/* Text truncation utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .text-6xl { font-size: 3rem; }
+  .text-8xl { font-size: 4rem; }
+  
+  section {
+    padding: 60px 0;
+  }
+}
+
+/* Button hover effects */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Navigation active state */
+nav button.active {
+  background: var(--warm-dark);
+  color: var(--warm-light);
+}
+
+/* Hero section gradient background */
+#hero {
+  background: linear-gradient(135deg, var(--warm-light) 0%, var(--warm-medium) 50%, var(--warm-brown) 100%);
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure widgets stay within hero section */
+#hero .widget-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* Hide widgets outside hero section */
+.floating-widget {
+  position: fixed !important;
+}
+
+/* Ensure other sections have higher z-index when scrolled to */
+#about, #gallery, #contact {
+  position: relative;
+  z-index: 10;
+  background: inherit;
+}
+
+/* Section backgrounds */
+#about {
+  background: var(--warm-light);
+}
+
+#gallery {
+  background: var(--warm-medium);
+}
+
+#contact {
+  background: var(--warm-dark);
+}
+
+/* Image hover effects */
+img {
+  transition: transform 0.5s ease;
+}
+
+.group:hover img {
+  transform: scale(1.05);
+}
+
+/* Card hover effects */
+.group {
+  transition: all 0.3s ease;
+}
+
+.group:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(21, 21, 21, 0.2);
+}

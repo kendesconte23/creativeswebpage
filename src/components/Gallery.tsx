@@ -1,155 +1,185 @@
 import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Eye, Heart, Camera } from 'lucide-react';
 
-const Gallery: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+interface GalleryProps {
+  onPhotoClick: (photo: any) => void;
+}
 
-  const images = [
-    {
-      src: "https://drive.google.com/thumbnail?id=1LMn1bqCQ__MwevIPdpAJQNOAPSsP7V0u&sz=s800",
-      alt: "Beautiful event styling by Creatives by Hazel & Ken",
-      category: "Our Work"
-    },
-    {
-      src: "https://drive.google.com/thumbnail?id=1mjtI6HDCo3BDc3QngYWhzzqUfJ4g4N5c&sz=s800",
-      alt: "Beautiful table centerpiece with balloons",
-      category: "Centerpieces"
-    },
-    {
-      src: "https://drive.google.com/thumbnail?id=18auikFkhG0rQzglI_HZYbktDe7w3Mff-&sz=s800",
-      alt: "Styled party table with decorations",
-      category: "Table Setup"
-    },
-    {
-      src: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=800",
-      alt: "Colorful balloon arrangements",
-      category: "Balloon Decor"
-    },
-    {
-      src: "https://images.pexels.com/photos/1395964/pexels-photo-1395964.jpeg?auto=compress&cs=tinysrgb&w=800",
-      alt: "Princess themed party decoration",
-      category: "Themed Parties"
-    },
-    {
-      src: "https://images.pexels.com/photos/1729840/pexels-photo-1729840.jpeg?auto=compress&cs=tinysrgb&w=800",
-      alt: "Elegant table and chair setup",
-      category: "Table Rentals"
-    },
-    {
-      src: "https://images.pexels.com/photos/1729854/pexels-photo-1729854.jpeg?auto=compress&cs=tinysrgb&w=800",
-      alt: "Birthday cake table decoration",
-      category: "Dessert Tables"
-    },
-    {
-      src: "https://images.pexels.com/photos/1729879/pexels-photo-1729879.jpeg?auto=compress&cs=tinysrgb&w=800",
-      alt: "Photo booth setup with props",
-      category: "Photo Booth"
-    },
-    {
-      src: "https://images.pexels.com/photos/1729842/pexels-photo-1729842.jpeg?auto=compress&cs=tinysrgb&w=800",
-      alt: "Outdoor party setup",
-      category: "Outdoor Events"
-    }
+const Gallery: React.FC<GalleryProps> = ({ onPhotoClick }) => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  const categories = [
+    { id: 'all', name: 'All' },
+    { id: 'decorations', name: 'Decorations' },
+    { id: 'flowers', name: 'Flowers' },
+    { id: 'lighting', name: 'Lighting' },
+    { id: 'tables', name: 'Tables' },
+    { id: 'ceremony', name: 'Ceremony' },
   ];
 
-  const nextImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage((selectedImage + 1) % images.length);
-    }
-  };
+  const galleryItems = [
+    {
+      id: 1,
+      title: 'Elegant White Theme',
+      category: 'decorations',
+      image: 'https://images.pexels.com/photos/1702373/pexels-photo-1702373.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Pure white decorations with gold accents',
+      likes: 245,
+    },
+    {
+      id: 2,
+      title: 'Rose Garden Setup',
+      category: 'flowers',
+      image: 'https://images.pexels.com/photos/1729797/pexels-photo-1729797.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Beautiful rose arrangements',
+      likes: 189,
+    },
+    {
+      id: 3,
+      title: 'Romantic Lighting',
+      category: 'lighting',
+      image: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Warm ambient lighting for intimate moments',
+      likes: 312,
+    },
+    {
+      id: 4,
+      title: 'Rustic Table Setting',
+      category: 'tables',
+      image: 'https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Rustic elegance with natural elements',
+      likes: 156,
+    },
+    {
+      id: 5,
+      title: 'Ceremony Arch',
+      category: 'ceremony',
+      image: 'https://images.pexels.com/photos/1157557/pexels-photo-1157557.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Stunning floral arch for vows',
+      likes: 278,
+    },
+    {
+      id: 6,
+      title: 'Garden Party Decor',
+      category: 'decorations',
+      image: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Outdoor wedding decorations',
+      likes: 203,
+    },
+    {
+      id: 7,
+      title: 'Bridal Bouquet',
+      category: 'flowers',
+      image: 'https://images.pexels.com/photos/1721558/pexels-photo-1721558.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Handcrafted bridal bouquet',
+      likes: 167,
+    },
+    {
+      id: 8,
+      title: 'Fairy Lights',
+      category: 'lighting',
+      image: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Magical fairy light installations',
+      likes: 234,
+    },
+    {
+      id: 9,
+      title: 'Reception Tables',
+      category: 'tables',
+      image: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800',
+      description: 'Elegant reception table setup',
+      likes: 198,
+    },
+  ];
 
-  const prevImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage((selectedImage - 1 + images.length) % images.length);
-    }
-  };
-
-  const categories = Array.from(new Set(images.map(img => img.category)));
+  const filteredItems = selectedCategory === 'all' 
+    ? galleryItems 
+    : galleryItems.filter(item => item.category === selectedCategory);
 
   return (
-    <section id="gallery" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-creative-blue-800 mb-4">Gallery</h2>
-          <div className="w-24 h-1 bg-creative-gradient mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl text-creative-blue-700 max-w-3xl mx-auto">
-            Take a look at some of our recent work and get inspired for your next event
+    <div className="min-h-screen p-8 pt-24">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-white mb-6">Gallery</h1>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            Explore our portfolio of beautiful wedding setups and decorations. 
+            Each image tells a story of love, celebration, and unforgettable moments.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {images.map((image, index) => (
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
+              className={`px-6 py-3 rounded-full transition-all duration-300 ${
+                selectedCategory === category.id
+                  ? 'bg-white text-purple-600 shadow-lg'
+                  : 'glass text-white hover:bg-white/20'
+              }`}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Gallery Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredItems.map((item) => (
             <div
-              key={index}
-              className="group cursor-pointer overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl border border-creative-blue-100"
-              onClick={() => setSelectedImage(index)}
+              key={item.id}
+              className="glass rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 cursor-pointer"
+              onClick={() => onPhotoClick(item)}
             >
               <div className="relative overflow-hidden">
                 <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-white text-sm font-medium">{image.category}</p>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="glass-dark p-2 rounded-full">
+                    <Eye className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-white/80 mb-4">{item.description}</p>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-pink-300" />
+                    <span className="text-white/80 text-sm">{item.likes}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-white/60">
+                    <Camera className="w-4 h-4" />
+                    <span className="text-sm capitalize">{item.category}</span>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Lightbox */}
-        {selectedImage !== null && (
-          <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
-            <div className="relative max-w-4xl max-h-full">
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 text-white hover:text-creative-orange-400 z-10 transition-colors duration-200"
-              >
-                <X size={32} />
-              </button>
-              
-              <button
-                onClick={prevImage}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-creative-orange-400 z-10 transition-colors duration-200"
-              >
-                <ChevronLeft size={32} />
-              </button>
-              
-              <button
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-creative-orange-400 z-10 transition-colors duration-200"
-              >
-                <ChevronRight size={32} />
-              </button>
-              
-              <img
-                src={images[selectedImage].src}
-                alt={images[selectedImage].alt}
-                className="max-w-full max-h-full object-contain rounded-lg"
-              />
-              
-              <div className="absolute bottom-4 left-4 right-4 text-center">
-                <p className="text-white text-lg font-medium">{images[selectedImage].category}</p>
-                <p className="text-gray-300 text-sm">{images[selectedImage].alt}</p>
-              </div>
-            </div>
+        {/* Call to Action */}
+        <div className="mt-20 text-center">
+          <div className="glass p-12 rounded-3xl">
+            <h2 className="text-3xl font-bold text-white mb-6">Ready to Create Your Dream Wedding?</h2>
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              Let us help you bring your vision to life. Contact us today to discuss your wedding plans.
+            </p>
+            <button className="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+              Get Started
+            </button>
           </div>
-        )}
-
-        <div className="text-center mt-12">
-          <p className="text-creative-blue-700 mb-6 text-lg">
-            Ready to create something beautiful for your next event?
-          </p>
-          <button 
-            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-creative-gradient text-white px-8 py-3 font-medium hover:shadow-lg hover:scale-105 transition-all duration-200 rounded-lg"
-          >
-            Start Planning Your Event
-          </button>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

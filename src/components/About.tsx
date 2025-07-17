@@ -1,99 +1,116 @@
 import React from 'react';
-import { Heart, Star, Users } from 'lucide-react';
+import { Heart, Users, Award, Clock } from 'lucide-react';
 
 const About: React.FC = () => {
-  const values = [
+  const features = [
     {
-      icon: <Heart className="w-8 h-8" />,
-      title: "Passion for Excellence",
-      description: "Every event is crafted with love, attention to detail, and a commitment to exceeding expectations.",
-      color: "creative-orange"
+      icon: Heart,
+      title: 'Passionate Service',
+      description: 'We pour our heart into every event, ensuring your special day is perfect in every detail.',
     },
     {
-      icon: <Star className="w-8 h-8" />,
-      title: "Creative Innovation",
-      description: "We bring fresh ideas and unique styling concepts to make your event stand out and create lasting memories.",
-      color: "creative-purple"
+      icon: Users,
+      title: 'Experienced Team',
+      description: 'Our skilled professionals bring years of experience in wedding planning and event coordination.',
     },
     {
-      icon: <Users className="w-8 h-8" />,
-      title: "Personal Touch",
-      description: "We work closely with each client to understand their vision and bring it to life with personalized service.",
-      color: "creative-teal"
-    }
+      icon: Award,
+      title: 'Quality Guaranteed',
+      description: 'We maintain the highest standards in all our services, from setup to execution.',
+    },
+    {
+      icon: Clock,
+      title: 'Timely Delivery',
+      description: 'We respect your schedule and ensure everything is ready when you need it.',
+    },
   ];
 
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen p-8 pt-24">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-creative-blue-800 mb-4">About Us</h2>
-          <div className="w-24 h-1 bg-creative-gradient mx-auto mb-8 rounded-full"></div>
+          <h1 className="text-5xl font-bold text-white mb-6">About CREATIVES</h1>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            We are passionate about creating unforgettable wedding experiences. 
+            Our Sari-Sari store approach means we offer everything you need for your special day, 
+            all in one convenient location.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <h3 className="text-2xl font-bold text-creative-blue-700 mb-6">Our Story</h3>
-            <div className="space-y-4 text-gray-700 text-lg">
+        {/* Story Section */}
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+          <div className="glass p-8 rounded-3xl">
+            <h2 className="text-3xl font-bold text-white mb-6">Our Story</h2>
+            <div className="space-y-4 text-white/80">
               <p>
-                Creatives by Hazel and Ken was born from a shared passion for creating beautiful, memorable events. 
-                What started as a dream between two creative minds has grown into a trusted name in event styling 
-                throughout Quezon City and beyond.
+                Founded with a vision to make dream weddings accessible to everyone, 
+                CREATIVES started as a small family business with big dreams. 
+                Just like a traditional Sari-Sari store that provides everything 
+                the community needs, we offer comprehensive wedding services under one roof.
               </p>
               <p>
-                We believe that every celebration deserves to be special, whether it's a child's birthday party, 
-                an intimate gathering, or a grand celebration. Our expertise lies in transforming ordinary spaces 
-                into extraordinary experiences through thoughtful design, quality materials, and meticulous attention to detail.
+                Our journey began when we realized that couples were struggling to 
+                coordinate multiple vendors for their wedding day. We decided to become 
+                the one-stop solution, offering everything from elegant decorations to 
+                professional photography services.
               </p>
               <p>
-                With years of experience in event styling and a deep understanding of what makes celebrations truly 
-                memorable, we've had the privilege of being part of countless special moments in our clients' lives.
+                Today, we're proud to have helped hundreds of couples create their 
+                perfect wedding day, each one unique and filled with love, laughter, 
+                and unforgettable memories.
               </p>
             </div>
           </div>
-          
-          <div className="lg:pl-12">
-            <div className="bg-creative-gradient-soft p-8 shadow-xl rounded-2xl border border-creative-blue-100">
-              <h3 className="text-2xl font-bold text-creative-blue-800 mb-6">What Makes Us Unique</h3>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-creative-orange-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                  <span>Personalized consultation to understand your vision and style preferences</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-creative-purple-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                  <span>High-quality materials and premium decorative elements</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-creative-teal-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                  <span>Professional setup and breakdown services</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-creative-blue-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                  <span>Flexible packages to fit various budgets and requirements</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-creative-orange-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                  <span>Timely delivery and reliable service you can trust</span>
-                </li>
-              </ul>
-            </div>
+
+          <div className="glass p-8 rounded-3xl">
+            <img
+              src="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Wedding setup"
+              className="w-full h-64 object-cover rounded-2xl mb-6"
+            />
+            <h3 className="text-2xl font-bold text-white mb-4">Why Choose Us?</h3>
+            <ul className="space-y-2 text-white/80">
+              <li>• Complete wedding packages</li>
+              <li>• Affordable pricing options</li>
+              <li>• Personalized service</li>
+              <li>• Local expertise</li>
+              <li>• Stress-free planning</li>
+            </ul>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
-            <div key={index} className={`text-center bg-white p-8 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-2xl border-2 border-${value.color}-100 hover:border-${value.color}-300 group`}>
-              <div className={`text-${value.color}-500 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300`}>
-                {value.icon}
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <div key={index} className="glass p-6 rounded-2xl text-center group hover:scale-105 transition-transform duration-300">
+                <div className="mb-4 flex justify-center">
+                  <div className="glass-dark p-4 rounded-full group-hover:bg-white/20 transition-colors duration-300">
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                <p className="text-white/80 text-sm">{feature.description}</p>
               </div>
-              <h4 className={`text-xl font-bold text-${value.color}-700 mb-4`}>{value.title}</h4>
-              <p className="text-gray-700">{value.description}</p>
-            </div>
-          ))}
+            );
+          })}
+        </div>
+
+        {/* Mission Section */}
+        <div className="mt-20 text-center">
+          <div className="glass p-12 rounded-3xl">
+            <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
+            <p className="text-xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+              To make every couple's wedding dreams come true by providing exceptional, 
+              affordable, and comprehensive wedding services. We believe that every love 
+              story deserves to be celebrated beautifully, and we're here to make that happen.
+            </p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
